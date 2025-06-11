@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ModsenTasksStepan</string>
+    <string name="title_activity_tasks_list">TasksListActivity</string>
 </resources>
