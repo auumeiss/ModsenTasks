@@ -18,7 +18,7 @@ class ProfileRepositoryImpl:ProfileRepository {
         if (password==potentialPassword){
             result=Result.success(Unit)
         } else {
-            result = Result.failure(Exception("Неверный пароль"))
+            result = Result.failure(Exception("Неверный пароль/логин"))
             }
         return result
     }
