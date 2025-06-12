@@ -9,12 +9,9 @@ import org.koin.dsl.module
 
 val tasksModule = module {
 
-    // Репозиторий
     single<TasksRepository> { TasksRepositoryImpl() }
 
-    // UseCase
     factory { GetTasksUseCase(get()) }
 
-    // ViewModel
     viewModel { TasksListViewModel(get()) }
 }
