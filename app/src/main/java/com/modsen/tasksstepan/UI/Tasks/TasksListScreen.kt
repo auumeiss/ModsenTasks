@@ -16,7 +16,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.modsen.tasksstepan.Domain.Tasks.Model.TaskDomainModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -35,22 +37,22 @@ fun TasksListScreen(
             }
         }
     }
-
-    if (state.isLoading) {
-        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
-        }
-    } else {
-        LazyColumn(
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(state.tasks) { task: TaskDomainModel ->
-                Button(
-                    onClick = { viewModel.onIntent(TasksListIntent.ClickTask(task)) },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(text = task.title)
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        if (state.isLoading)
+            {
+                CircularProgressIndicator()
+            } else {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.Center
+            ) {
+                items(state.tasks) { task: TaskDomainModel ->
+                    Button(
+                        onClick = { viewModel.onIntent(TasksListIntent.ClickTask(task)) },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(text = task.title)
+                    }
                 }
             }
         }

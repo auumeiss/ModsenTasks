@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.modsen.tasksstepan.Domain.Profile.Usecase.GetProfileUseCase
 import com.modsen.tasksstepan.UI.Common.SingleFlowEvent
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -35,6 +36,7 @@ class LoginViewModel (private val getProfileUseCase:GetProfileUseCase) : ViewMod
 
         viewModelScope.launch {
             _state.update{it.copy(isLoading=true)}
+            delay(1000)
             val result=getProfileUseCase(username,password)
             _state.update{it.copy(isLoading = false)}
             result.fold(
