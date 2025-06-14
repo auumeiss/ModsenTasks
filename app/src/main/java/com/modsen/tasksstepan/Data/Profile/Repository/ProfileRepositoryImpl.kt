@@ -11,11 +11,14 @@ import kotlinx.coroutines.tasks.await
 class ProfileRepositoryImpl:ProfileRepository {
     fun ProfileDataModel.toDomain()=ProfileDomainModel(login,password)
 
+    private val profile = listOf(
+        ProfileDataModel("stepan","stepan"),
+    )
     override suspend fun getProfile(login:String, password:String): Result<Unit> {
-        val data = Firebase.firestore.collection("users").document(login).get().await()
-        val potentialPassword = data.getString("password")
+        val profileDomain = profile.map{it.toDomain()}
         val result:Result<Unit>
-        if (password==potentialPassword){
+        val findProfile = profileDomain.find { it.login==login && it.password == password }
+        if (findProfile!=null){
             result=Result.success(Unit)
         } else {
             result = Result.failure(Exception("Неверный пароль/логин"))
