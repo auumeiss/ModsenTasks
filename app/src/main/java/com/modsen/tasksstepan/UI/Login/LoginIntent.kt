@@ -1,7 +1,7 @@
 package com.modsen.tasksstepan.UI.Login
 
-interface LoginIntent {
-    class EnterUsername(val login:String):LoginIntent
-    class EnterPassword(val password:String):LoginIntent
-    object Submit: LoginIntent
+sealed interface LoginIntent {
+    data class EnterUsername(val login:String):LoginIntent
+    data class EnterPassword(val password:String):LoginIntent
+    data object Submit: LoginIntent
 }

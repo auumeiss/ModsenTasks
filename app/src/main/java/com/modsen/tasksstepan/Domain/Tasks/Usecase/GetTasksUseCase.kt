@@ -1,10 +1,10 @@
 package com.modsen.tasksstepan.Domain.Tasks.Usecase
 
-import com.modsen.tasksstepan.Domain.Tasks.Model.TaskDomainModel
-import com.modsen.tasksstepan.Domain.Tasks.Repository.TasksRepository
+import com.modsen.tasksstepan.Data.Tasks.Model.TaskDataModel
+import com.modsen.tasksstepan.Domain.Tasks.Repository.ITasksRepository
 
-class GetTasksUseCase(private val repository: TasksRepository) {
-    suspend operator fun invoke(): List<TaskDomainModel> {
+class GetTasksUseCase(private val repository: ITasksRepository) {
+    suspend operator fun invoke(): List<TaskDataModel> {
         return repository.getTasks()
     }
 }

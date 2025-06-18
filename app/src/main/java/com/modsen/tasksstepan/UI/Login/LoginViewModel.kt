@@ -40,7 +40,8 @@ class LoginViewModel (private val getProfileUseCase:GetProfileUseCase) : ViewMod
             val result=getProfileUseCase(username,password)
             _state.update{it.copy(isLoading = false)}
             result.fold(
-                onSuccess = {_event.emit(LoginEvent.AuthorizationMessage("Логин и пароль верны"))},
+                onSuccess = {_event.emit(LoginEvent.AuthorizationMessage("Логин и пароль верны"))
+                            _event.emit(LoginEvent.NavigeteToNextScreen)},
                 onFailure = {_event.emit(LoginEvent.AuthorizationMessage("Неверный логин или пароль"))}
             )
         }

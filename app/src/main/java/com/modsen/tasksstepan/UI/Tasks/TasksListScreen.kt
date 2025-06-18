@@ -16,21 +16,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
-import com.modsen.tasksstepan.Domain.Tasks.Model.TaskDomainModel
+import com.modsen.tasksstepan.Data.Tasks.Model.TaskDataModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun TasksListScreen(
     viewModel: TasksListViewModel = koinViewModel(),
-    onNavigate: (TaskDomainModel) -> Unit
+    onNavigate: (TaskDataModel) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.onIntent(TasksListIntent.LoadTasks)
         viewModel.event.collect { event ->
             when (event) {
                 is TasksListEvent.NavigateToTask -> onNavigate(event.task)
@@ -46,7 +43,7 @@ fun TasksListScreen(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.Center
             ) {
-                items(state.tasks) { task: TaskDomainModel ->
+                items(state.tasks) { task: TaskDataModel ->
                     Button(
                         onClick = { viewModel.onIntent(TasksListIntent.ClickTask(task)) },
                         modifier = Modifier.fillMaxWidth()

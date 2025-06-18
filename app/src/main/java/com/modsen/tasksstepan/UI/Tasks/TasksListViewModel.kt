@@ -24,9 +24,13 @@ class TasksListViewModel(
     private val _event = SingleFlowEvent<TasksListEvent>(viewModelScope)
     val event = _event.flow
 
+    init{
+        loadTasks()
+    }
+
     fun onIntent(intent: TasksListIntent) {
         when (intent) {
-            is TasksListIntent.LoadTasks -> loadTasks()
+            is TasksListIntent.LoadTasks -> Unit
             is TasksListIntent.ClickTask -> _event.emit(TasksListEvent.NavigateToTask(intent.task))
         }
     }

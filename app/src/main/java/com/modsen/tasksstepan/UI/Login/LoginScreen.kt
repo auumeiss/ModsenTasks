@@ -26,6 +26,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.google.firebase.FirebaseApp
+import com.modsen.tasksstepan.Data.Tasks.Model.TaskDataModel
 import com.modsen.tasksstepan.Domain.Profile.Usecase.GetProfileUseCase
 import org.koin.android.compat.ScopeCompat.viewModel
 import org.koin.androidx.compose.koinViewModel
@@ -36,7 +37,8 @@ import org.koin.dsl.module
 
 @Composable
 fun LoginScreen(
-    viewModel: LoginViewModel = koinViewModel()
+    viewModel: LoginViewModel = koinViewModel(),
+    onNavigate: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     val context = LocalContext.current
@@ -47,8 +49,8 @@ fun LoginScreen(
                 is LoginEvent.AuthorizationMessage -> {
                     Toast.makeText(context, event.message, Toast.LENGTH_LONG).show()
                 }
-                //код для навигации на другой экран
                 is LoginEvent.NavigeteToNextScreen->{
+                    onNavigate()
                 }
             }
         }
