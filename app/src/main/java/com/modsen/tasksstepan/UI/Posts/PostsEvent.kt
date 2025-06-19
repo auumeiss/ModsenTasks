@@ -1,4 +1,5 @@
 package com.modsen.tasksstepan.UI.Posts
 
-class PostsEvent {
+sealed interface PostsEvent {
+    data class NavigateToPost(val postId: Int) : PostsEvent
 }
