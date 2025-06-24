@@ -1,6 +1,8 @@
 package com.modsen.tasksstepan.UI.Posts
 
+import android.R.attr.onClick
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +23,8 @@ import androidx.compose.ui.unit.sp
 fun PostCard(
     title: String,
     body: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
 ) {
     val shape = RoundedCornerShape(16.dp)
     Card(
@@ -30,7 +33,8 @@ fun PostCard(
             .padding(8.dp)
             .fillMaxWidth()
             .clip(shape)
-            .border(2.dp, Color(0xFF9C27B0))
+            .border(2.dp, Color(0xFF9C27B0), shape)
+            .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
