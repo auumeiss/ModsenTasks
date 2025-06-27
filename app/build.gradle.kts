@@ -122,10 +122,5 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.10.1")
     // Optional - Integration with ViewModels
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
-    // Optional - Integration with LiveData
-    implementation("androidx.compose.runtime:runtime-livedata")
-    // Optional - Integration with RxJava
-    implementation("androidx.compose.runtime:runtime-rxjava2")
-
 }
 

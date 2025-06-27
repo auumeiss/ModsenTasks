@@ -24,7 +24,6 @@ fun PostCard(
     title: String,
     body: String,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {}
 ) {
     val shape = RoundedCornerShape(16.dp)
     Card(
@@ -34,7 +33,6 @@ fun PostCard(
             .fillMaxWidth()
             .clip(shape)
             .border(2.dp, Color(0xFF9C27B0), shape)
-            .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(

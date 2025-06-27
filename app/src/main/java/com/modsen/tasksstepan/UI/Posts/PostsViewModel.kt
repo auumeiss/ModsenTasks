@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.modsen.tasksstepan.Domain.Posts.Repository.IPostsRepository
 import com.modsen.tasksstepan.UI.Common.SingleFlowEvent
-import com.modsen.tasksstepan.Utils.TResult
+import com.modsen.tasksstepan.Domain.Utils.TResult
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update

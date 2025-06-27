@@ -1,4 +1,4 @@
-package com.modsen.tasksstepan.Utils
+package com.modsen.tasksstepan.Domain.Utils
 
 sealed class MyException:Throwable() {
     object NoInternet: MyException()

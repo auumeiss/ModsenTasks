@@ -1,9 +1,9 @@
 package com.modsen.tasksstepan.Domain.Posts.Repository
 
-import com.modsen.tasksstepan.Domain.Posts.Module.PostsDomainModule
-import com.modsen.tasksstepan.Utils.MyException
-import com.modsen.tasksstepan.Utils.TResult
+import com.modsen.tasksstepan.Domain.Posts.Model.PostsDomainModel
+import com.modsen.tasksstepan.Domain.Utils.MyException
+import com.modsen.tasksstepan.Domain.Utils.TResult
 
 interface IPostsRepository {
-    suspend fun getPosts(): TResult<List<PostsDomainModule>, MyException>
+    suspend fun getPosts(): TResult<List<PostsDomainModel>, MyException>
 }
