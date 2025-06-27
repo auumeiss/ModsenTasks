@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.FirebaseApp
 import com.modsen.tasksstepan.DI.loginModule
+import com.modsen.tasksstepan.DI.postsModule
 import com.modsen.tasksstepan.DI.tasksModule
 import com.modsen.tasksstepan.UI.Login.LoginScreen
 import com.modsen.tasksstepan.UI.Tasks.TasksListScreen
@@ -24,7 +25,8 @@ class App : Application() {
             androidLogger()
             modules(
                 tasksModule,
-                loginModule
+                loginModule,
+                postsModule
             )
         }
     }
